@@ -105,10 +105,16 @@ export class ProductsService {
           )
         }else{
           //???
+          product.images = await this.productImageRepository.findBy({product: {id},});
         }
-        await this.productRepository.save(product);
+        await queryRunner.manager.save(product);
+        //await this.productRepository.save(product);
+        await queryRunner.commitTransaction();
+        await queryRunner.release();
         return product;
       } catch (error) {
+        await queryRunner.rollbackTransaction();
+        await queryRunner.release();
         this.handleDBExceptions(error);
       }
    

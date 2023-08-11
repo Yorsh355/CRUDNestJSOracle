@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Product } from "./product.entity";
+import { Product } from './product.entity';
 
 @Entity()
 export class ProductImage{
@@ -15,7 +15,8 @@ export class ProductImage{
  @ManyToOne(
   //Tipo de entidad con la que vamos a relacionar
   () => Product,
-  product => product.images
+  product => product.images,
+  {onDelete: 'CASCADE'}
  )
  //Definimos campo que nos lleva a la entidad relacionada
  product: Product;
