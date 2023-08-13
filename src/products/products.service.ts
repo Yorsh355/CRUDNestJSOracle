@@ -6,7 +6,7 @@ import { DataSource, Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 
-import { PaginationDto } from '../common/pagination.dto';
+import { PaginationDto } from '../common/dtos/pagination.dto';
 import { Product, ProductImage } from './entities';
 
 @Injectable()

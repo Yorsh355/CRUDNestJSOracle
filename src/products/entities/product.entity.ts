@@ -68,7 +68,7 @@ export class Product {
     //Campo entidad relacionada que apunta a esta relación
     productImage => productImage.product,
     { cascade: true, //Para borrar en cascada
-      eager: true //para que carge los datos de la relación, en este caso images
+      eager: true //para que carge los datos de la relación, en este caso images 
     }
   )
   images?: ProductImage[];
