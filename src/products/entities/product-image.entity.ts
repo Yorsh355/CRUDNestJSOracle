@@ -20,4 +20,4 @@ export class ProductImage{
  )
  //Definimos campo que nos lleva a la entidad relacionada
  product: Product;
-}
+} 
