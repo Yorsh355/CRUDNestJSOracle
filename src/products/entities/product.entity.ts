@@ -4,7 +4,7 @@ import { BeforeInsert, BeforeUpdate, Column,
 import {v4 as uuidv4} from 'uuid';
 import { ProductImage } from "./product-image.entity";
 
-@Entity()
+@Entity({name: 'product'})
 export class Product {
   //Oracle no soporta UUID entonces debemos declarar un varchar de 36 para guardar el UUID
   @PrimaryColumn({ length: 36})
@@ -27,7 +27,7 @@ export class Product {
 
   @Column({
     type: 'varchar',
-    length: 800,
+    length: 255,
     nullable: true
   })
   description: string;

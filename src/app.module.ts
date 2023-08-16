@@ -9,6 +9,7 @@ import { DataSourceConfig } from './config/data.source';
 //import { Product, ProductImage } from './products/entities';
 //import { Ad_factelec } from './factelec/entities/AD_FACTELEC.entity';
 //import { Origenes_tabla } from './factelec/entities/ORIGENES_TABLA.entity';
+import { MarcasModule } from './marcas/marcas.module';
 
 
 @Module({
@@ -21,7 +22,8 @@ import { DataSourceConfig } from './config/data.source';
     TypeOrmModule.forRoot({...DataSourceConfig}),
     ProductsModule,
     CommonModule,
-    FactelecModule
+    FactelecModule,
+    MarcasModule
 
     /* TypeOrmModule.forRoot({
       type: "oracle",
