@@ -23,7 +23,9 @@ export class MarcasController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMarcaDto: UpdateMarcaDto) {
+  update(
+    @Param('id') id: string, 
+    @Body() updateMarcaDto: UpdateMarcaDto) {
     return this.marcasService.update(+id, updateMarcaDto);
   }
 

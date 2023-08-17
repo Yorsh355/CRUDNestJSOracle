@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateMarcaDto } from './dto/create-marca.dto';
 import { UpdateMarcaDto } from './dto/update-marca.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -14,12 +14,18 @@ export class MarcasService {
 
   async create(createMarcaDto: CreateMarcaDto) {
    try {
-     const brand = this.marcaRepository.create(createMarcaDto);
+    const lastRecord = await this.marcaRepository.createQueryBuilder()
+    .orderBy("AF_MARCAS_AUD.MARCID", "DESC" )
+    .getOne()
+    const lasRecordId = lastRecord.MARCID + 1;
+    const brand = this.marcaRepository.create(createMarcaDto);
+    brand.MARCID = lasRecordId;
+    console.log( lasRecordId);
      await this.marcaRepository.save(brand);
      return brand;
    } catch (error) {
     console.log(error);
-    throw new InternalServerErrorException('Algo salio mal')
+    throw new InternalServerErrorException(error)
    }
   }
 
@@ -27,15 +33,30 @@ export class MarcasService {
     return this.marcaRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} marca`;
+  async findOne(id: number) {
+    const brand = await this.marcaRepository.findOneBy({MARCID: +id});
+    if(!brand)
+      throw new NotFoundException(`Marca whit id ${id} not found`);
+    return brand;
   }
 
-  update(id: number, updateMarcaDto: UpdateMarcaDto) {
-    return `This action updates a #${id} marca`;
+  async update(id: number, updateMarcaDto: UpdateMarcaDto) {
+    //Buscamos un producto por id y cargamos las propiedades del updateMarcaDto 
+    const brand = await this.marcaRepository.preload({
+      MARCID: +id,
+      ...updateMarcaDto 
+    })
+    if(!brand) throw new NotFoundException(`Product with id: ${id} not found`);
+    
+    await this.marcaRepository.save(brand);
+
+    return brand;
+
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} marca`;
+  async remove(id: number) {
+    const brand = await this.findOne(+id)
+    await this.marcaRepository.remove(brand);
+    return brand;
   }
 }

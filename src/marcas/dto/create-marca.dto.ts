@@ -2,6 +2,9 @@ import { IsDate, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from
 
 export class CreateMarcaDto {
 
+  @IsOptional()
+  MARCID: number;
+
   @IsNotEmpty()
   @IsNumber()
   MARCEMPR: number;

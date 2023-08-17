@@ -1,12 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, Generated, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'AF_MARCAS_AUD'})
 export class AF_MARCAS_AUD {
 
- @PrimaryGeneratedColumn({
-    name: "MARCID",
-    type: 'number',
-  }) 
+  
+@PrimaryColumn({
+   unique: true,
+   name: "MARCID",
+   type: 'number'
+ }) 
+  @Generated("increment")
   MARCID: number;
 
   @Column({
@@ -84,7 +87,7 @@ export class AF_MARCAS_AUD {
     length: 50,
     nullable: true
   })
-  AUDIT_BY: string;
+  AUDIT_BY: string; 
 
  /*  @Column({
     type: 'timestamp',
@@ -92,4 +95,11 @@ export class AF_MARCAS_AUD {
   })
   AUDIT_AT: Date;
 */
+
+@BeforeInsert()
+private generateId(){
+  /* let lastId: number = 976;
+  if(!this.MARCID) this.MARCID = this.lastId + 1; */
+
+}
 } 
