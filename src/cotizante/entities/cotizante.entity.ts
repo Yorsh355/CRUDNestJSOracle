@@ -1,6 +1,8 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Tpident } from "../../tpident/entities/tpident.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
+import { Type } from 'class-transformer';
 
-@Entity({name: "PA_COTIZANTE"})
+@Entity({name: 'PA_COTIZANTE'})
 export class Cotizante {
 
   @PrimaryColumn({
@@ -14,10 +16,9 @@ export class Cotizante {
   @Column({
     name: "COTITPIDENT",
     nullable: false,
-    type: 'varchar2',
-    length: 22,
+    type: 'number'
   })
-  COTITPIDENT: string;
+  COTITPIDENT: number;
 
   //NUMERO DE DOCUMENTO DE IDENTIDAD
   @Column({
@@ -81,4 +82,14 @@ export class Cotizante {
   })
   COTIESTADO: string;
 
+
+  /* @OneToOne(      
+    () => Tpident,
+    {eager:true})
+  @JoinColumn({ name: "COTITPIDENT" })
+  tpident: Tpident; */
+
+  @ManyToOne(() => Tpident, tpident => tpident.cotizantes)
+  @JoinColumn({ name: "COTITPIDENT" }) // Asegúrate de configurar la columna de unión adecuadamente
+  tpident: Tpident;
 }

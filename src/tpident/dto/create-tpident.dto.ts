@@ -1,4 +1,5 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsArray, IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { OneToMany } from "typeorm";
 
 export class CreateTpidentDto {
 
@@ -41,5 +42,10 @@ export class CreateTpidentDto {
   @IsOptional()
   @IsString()
   TPIDFAELTOC: string;
+
+  /* @IsOptional()
+  @IsNumber()
+  @IsArray()
+  COTITPIDENT: number; */
 
 }

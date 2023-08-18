@@ -28,22 +28,6 @@ import { CotizanteModule } from './cotizante/cotizante.module';
     MarcasModule,
     TpidentModule,
     CotizanteModule
-
-    /* TypeOrmModule.forRoot({
-      type: "oracle",
-      host: process.env.DB_HOST,
-      port: +process.env.DB_PORT,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      serviceName: process.env.DB_NAME,
-      //synchronize: true,
-      autoLoadEntities: true,//carga automatica de las entities
-      entities: [Product, ProductImage, Ad_factelec, Origenes_tabla], 
-    }),
-    ProductsModule
-    CommonModule
-    FactelecModule
-    */
   ],
   controllers: [],
   providers: [],

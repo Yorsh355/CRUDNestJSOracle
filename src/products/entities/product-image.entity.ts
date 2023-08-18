@@ -1,6 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Product } from './product.entity';
-import { AF_MARCAS_AUD } from "src/marcas/entities/AF_MARCAS_AUD.entity";
 
 @Entity()
 export class ProductImage{

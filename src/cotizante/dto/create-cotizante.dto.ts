@@ -1,52 +1,41 @@
-import { IsDateString, IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { PrimaryColumn } from "typeorm";
+import { IsDateString, IsEmpty, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateCotizanteDto {
 
-  @PrimaryColumn({
-    unique: true,
-    name: "TPIDID",
-    type: 'number'
-  })
-  TPIDID: number;
+  @IsOptional()
+  COTIID: number;
 
   //TODO: este es el campo de la relación, tener en cuenta como se manejaría.
   @IsNotEmpty()
-  @IsString()
-  TPIDNOMB: string;
+  @IsNumber()
+  COTITPIDENT: number;
 
   @IsNotEmpty()
   @IsString()
-  TPIDABRV: string;
+  COTIIDENT: string;
 
   @IsNotEmpty()
   @IsString()
-  TPIDESTADO: string;
-
-  @IsNotEmpty()
-  @IsString()
-  TPIDUSCR: string;
+  COTINOMB: string;
 
   @IsNotEmpty()
   @IsDateString()
-  TPIDFECR: Date; 
+  COTIFECR: Date;
+  
+  @IsNotEmpty()
+  @IsString()
+  COTIUSCR: string;
   
   @IsOptional()
   @IsString()
-  TPIDUSACT: string;
+  COTIUSACT: string;
 
   @IsOptional()
   @IsDateString()
-  TPIDFEAC: Date; 
+  COTIFEAC: Date; 
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  TPIDFAEL: string;
-
-  @IsOptional()
-  @IsString()
-  TPIDFAELTOC: string;
-
-
+  COTIESTADO: string;
 
 }

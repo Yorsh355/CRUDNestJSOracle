@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Cotizante } from "../../cotizante/entities/cotizante.entity";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn} from "typeorm";
 
 @Entity({name: 'PA_TPIDENT'})
 export class Tpident {
@@ -91,5 +92,14 @@ export class Tpident {
   TPIDFAELTOC: string;
 
   //TODO: relación OneToMany
+ 
+  /*@OneToOne(
+    () => Cotizante,       cotizante => cotizante.tpident)
+  cotizante: Cotizante[]; */
 
+  @OneToMany(
+    () => Cotizante, 
+    cotizante => cotizante.tpident
+    )
+  cotizantes: Cotizante[];
 }
