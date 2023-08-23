@@ -17,7 +17,7 @@ export class BitacoraService {
     return 'This action adds a new bitacora';
   }
 
-  findAll() {
+  async findAll() {
     return this.bitacoraRepo.find({
       take: 10,
     });

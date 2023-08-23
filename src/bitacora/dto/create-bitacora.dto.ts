@@ -1,7 +1,13 @@
-import { IsDateString, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import {
+  IsDateString,
+  IsIn,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateBitacoraDto {
-
   @IsOptional()
   @IsNumber()
   BITAID: number;
@@ -70,4 +76,3 @@ export class CreateBitacoraDto {
   @IsIn([0, 1])
   BITADIRECTUSUA: number;
 }
-

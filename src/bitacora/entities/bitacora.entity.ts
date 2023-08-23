@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({name: 'SE_BITACORA' })
+@Entity({ name: 'SE_BITACORA' })
 export class Bitacora {
   //CONSECUTIVO DEL REGISTRO
   @PrimaryColumn({
@@ -65,7 +65,7 @@ export class Bitacora {
     name: 'BITAFECR',
     type: 'date',
     nullable: false,
-    default: () => "SYSDATE",
+    default: () => 'SYSDATE',
   })
   BITAFECR: Date;
 
@@ -93,7 +93,7 @@ export class Bitacora {
     length: 255,
     nullable: true,
   })
-  BITASESION: string;  
+  BITASESION: string;
 
   //RELACION CON LA TABLA DE SI_HUELLEROAPP
   @Column({
@@ -101,7 +101,7 @@ export class Bitacora {
     type: 'number',
     nullable: true,
   })
-  BITAHLLO: number;  
+  BITAHLLO: number;
 
   //RELACION CON LA TABLA DE PA_SEDE SEDE EN LA QUE SE REALIZA EL INGRESO
   @Column({
@@ -109,7 +109,7 @@ export class Bitacora {
     type: 'number',
     nullable: false,
   })
-  BITASEDE: number;  
+  BITASEDE: number;
 
   //DIRECCIÓN IP DEL DISPOSITIVO DESDE DONDE SE INICIA SESIÓN
   @Column({
@@ -117,9 +117,9 @@ export class Bitacora {
     type: 'varchar2',
     length: 255,
     nullable: false,
-    default: '0.0.0.0'
+    default: '0.0.0.0',
   })
-  BITAIP: string;  
+  BITAIP: string;
 
   //IDENTIFICA LA SESION DEL NAVEGADOR (NAVEGADOR UNICO)
   @Column({
@@ -128,24 +128,23 @@ export class Bitacora {
     length: 255,
     nullable: true,
   })
-  BITANAVID: string;  
+  BITANAVID: string;
 
   //1 = USUARIO TOC, 0 = USUARIO CLIENTE
   @Column({
     name: 'BITATOC',
     type: 'number',
     nullable: false,
-    default: 0
+    default: 0,
   })
-  BITATOC: number; 
-  
+  BITATOC: number;
+
   //0 = USUARIO SIISA;1= ACTIVE DIRECTORY
   @Column({
     name: 'BITADIRECTUSUA',
     type: 'number',
     nullable: true,
-    default: 0
+    default: 0,
   })
-  BITADIRECTUSUA: number; 
+  BITADIRECTUSUA: number;
 }
-
