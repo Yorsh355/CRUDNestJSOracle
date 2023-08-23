@@ -11,7 +11,6 @@ import { Cotizante } from 'src/cotizante/entities/cotizante.entity';
   providers: [TpidentService],
   imports: [
     TypeOrmModule.forFeature([Tpident, Cotizante]), 
-    //CotizanteModule
   ],
   //exports: [TpidentService]
 })

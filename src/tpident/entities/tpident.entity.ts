@@ -1,47 +1,51 @@
-import { Cotizante } from "../../cotizante/entities/cotizante.entity";
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn} from "typeorm";
+import { Cotizante } from '../../cotizante/entities/cotizante.entity';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+} from 'typeorm';
 
-@Entity({name: 'PA_TPIDENT'})
+@Entity({ name: 'PA_TPIDENT' })
 export class Tpident {
-
   @PrimaryColumn({
     unique: true,
-    name: "TPIDID",
-    type: 'number'
+    name: 'TPIDID',
+    type: 'number',
   })
   TPIDID: number;
 
-  //NOMBRE DEL TIPO DE DOCUMENTO DE IDENTIFICACION 
+  //NOMBRE DEL TIPO DE DOCUMENTO DE IDENTIFICACION
   @Column({
-    name: "TPIDNOMB",
+    name: 'TPIDNOMB',
     nullable: false,
     type: 'varchar2',
     length: 255,
   })
   TPIDNOMB: string;
 
-  //ABREVIACION DEL TIPO DE DOCUMENTO DE IDENTIFICACION 
+  //ABREVIACION DEL TIPO DE DOCUMENTO DE IDENTIFICACION
   @Column({
-    name: "TPIDABRV",
+    name: 'TPIDABRV',
     nullable: false,
     type: 'varchar2',
     length: 255,
   })
   TPIDABRV: string;
 
-  //ESTADO DEL REGISTRO 
+  //ESTADO DEL REGISTRO
   @Column({
-    name: "TPIDESTADO",
+    name: 'TPIDESTADO',
     nullable: false,
     type: 'varchar2',
     length: 1,
-    default: 'A'
+    default: 'A',
   })
   TPIDESTADO: string;
 
   //USUARIO DE CREACION DEL REGISTRO
   @Column({
-    name: "TPIDUSCR",
+    name: 'TPIDUSCR',
     nullable: false,
     type: 'varchar2',
     length: 10,
@@ -50,15 +54,15 @@ export class Tpident {
 
   //FECHA DE CREACION DEL REGISTRO
   @Column({
-    name: "TPIDFECR",
+    name: 'TPIDFECR',
     type: 'date',
-    nullable: false
+    nullable: false,
   })
   TPIDFECR: Date;
 
   //USUARIO DE ACTUALIZACIÓN DEL REGISTRO
   @Column({
-    name: "TPIDUSACT",
+    name: 'TPIDUSACT',
     nullable: true,
     type: 'varchar2',
     length: 10,
@@ -67,15 +71,15 @@ export class Tpident {
 
   //FECHA DE ACTUALIZACIÓN DEL REGISTRO
   @Column({
-    name: "TPIDFEAC",
+    name: 'TPIDFEAC',
     type: 'date',
-    nullable: false
+    nullable: false,
   })
   TPIDFEAC: Date;
 
   //ABREVIACIÓN DEL TIPO DE DOCUMENTO DE IDENTIFICACIÓN PARA FACTURACIÓN ELECTRÓNICA
   @Column({
-    name: "TPIDFAEL",
+    name: 'TPIDFAEL',
     nullable: true,
     type: 'varchar2',
     length: 2,
@@ -84,7 +88,7 @@ export class Tpident {
 
   //ABREVIACIÓN DEL TIPO DE DOCUMENTO DE IDENTIFICACIÓN PARA FACTURACIÓN ELECTRÓNICA SOFTWARE PROPIO
   @Column({
-    name: "TPIDFAELTOC",
+    name: 'TPIDFAELTOC',
     nullable: true,
     type: 'varchar2',
     length: 20,
@@ -92,14 +96,11 @@ export class Tpident {
   TPIDFAELTOC: string;
 
   //TODO: relación OneToMany
- 
+
   /*@OneToOne(
     () => Cotizante,       cotizante => cotizante.tpident)
   cotizante: Cotizante[]; */
 
-  @OneToMany(
-    () => Cotizante, 
-    cotizante => cotizante.tpident
-    )
+  @OneToMany(() => Cotizante, (cotizante) => cotizante.tpident, {eager: true})
   cotizantes: Cotizante[];
 }

@@ -12,6 +12,7 @@ import { DataSourceConfig } from './config/data.source';
 import { MarcasModule } from './marcas/marcas.module';
 import { TpidentModule } from './tpident/tpident.module';
 import { CotizanteModule } from './cotizante/cotizante.module';
+import { BitacoraModule } from './bitacora/bitacora.module';
 
 
 @Module({
@@ -27,7 +28,8 @@ import { CotizanteModule } from './cotizante/cotizante.module';
     FactelecModule,
     MarcasModule,
     TpidentModule,
-    CotizanteModule
+    CotizanteModule,
+    BitacoraModule
   ],
   controllers: [],
   providers: [],

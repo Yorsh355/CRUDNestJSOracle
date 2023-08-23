@@ -47,7 +47,7 @@ export class TpidentService {
   
 
   async findAll() {
-    return this.tpidentRepository.find({});
+    return this.tpidentRepository.find();
   }
 
  /*  async findOne(id: number) {
