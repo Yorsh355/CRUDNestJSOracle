@@ -13,6 +13,7 @@ import { CotizanteModule } from './cotizante/cotizante.module';
 import { BitacoraModule } from './bitacora/bitacora.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { SedeModule } from './sede/sede.module';
+import { EmpresasModule } from './empresas/empresas.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { SedeModule } from './sede/sede.module';
     BitacoraModule,
     UsuariosModule,
     SedeModule,
+    EmpresasModule,
   ],
   controllers: [],
   providers: [],
