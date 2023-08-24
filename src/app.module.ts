@@ -14,6 +14,7 @@ import { BitacoraModule } from './bitacora/bitacora.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { SedeModule } from './sede/sede.module';
 import { EmpresasModule } from './empresas/empresas.module';
+import { SoftwareModule } from './software/software.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { EmpresasModule } from './empresas/empresas.module';
     UsuariosModule,
     SedeModule,
     EmpresasModule,
+    SoftwareModule,
   ],
   controllers: [],
   providers: [],

@@ -203,7 +203,7 @@ export class Empresa {
   })
   EMPRCREE: string;
 
-  //TARIFA DEL CREE 
+  //TARIFA DEL CREE
   @Column({
     name: 'EMPRTACREE',
     type: 'number',
@@ -220,7 +220,7 @@ export class Empresa {
   })
   EMPRIDENT: string;
 
-  //RELACION CON LA TABLA  PA_TPSOCIEDAD 
+  //RELACION CON LA TABLA  PA_TPSOCIEDAD
   @Column({
     name: 'EMPRTPSO',
     type: 'number',
@@ -334,7 +334,7 @@ export class Empresa {
     default: 40,
   })
   EMPRIMC: number;
-  
+
   //RELACIÓN CON LA TABLA FA_PROVETECNO
   @Column({
     name: 'EMPRPROVETEC',
@@ -390,4 +390,3 @@ export class Empresa {
   })
   EMPREDIGA: string;
 }
-

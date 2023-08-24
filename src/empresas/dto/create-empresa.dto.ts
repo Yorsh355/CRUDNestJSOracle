@@ -1,10 +1,17 @@
-import { IsDateString, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, isNumber } from "class-validator";
+import {
+  IsDateString,
+  IsIn,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateEmpresaDto {
   //CONSECUTIVO DE LA EMPRESA EN LA TABLA
   @IsOptional()
   @IsNumber()
-  EMPRID: number;
+  EMPRID?: number;
 
   //DENOMINACION O RAZON SOCIAL DE LA EMPRESA
   @IsNotEmpty()
@@ -24,7 +31,7 @@ export class CreateEmpresaDto {
   //FECHA DE CONSTITUCION DE LA EMPRESA
   @IsOptional()
   @IsDateString()
-  EMPRFECO: Date;
+  EMPRFECO?: Date;
 
   //RELACION CON LA TABLA SE_USUARIOS (CONTADOR PUBLICO)
   @IsNotEmpty()
@@ -53,12 +60,12 @@ export class CreateEmpresaDto {
 
   //IMAGEN DE LA EMPRESA (LOGO)
   @IsOptional()
-  EMPRLOGO: Buffer;
+  EMPRLOGO?: Buffer;
 
   //EXTENSION DE LA IMAGEN (LOGO)
   @IsOptional()
   @IsString()
-  EMPREXTLOGO: string;
+  EMPREXTLOGO?: string;
 
   //RELACIÓN CON LA TABLA  PA_TPIDENT
   @IsNotEmpty()
@@ -78,22 +85,22 @@ export class CreateEmpresaDto {
   //FECHA DE CREACION DEL REGISTRO
   @IsOptional()
   @IsDateString()
-  EMPRFECR: Date;
+  EMPRFECR?: Date;
 
   //USUARIO DE ACTUALIZACION DEL REGISTRO
   @IsOptional()
   @IsString()
-  EMPRUSACT: string;
+  EMPRUSACT?: string;
 
   //FECHA DE ACTUALIZACION DEL REGISTRO
   @IsOptional()
   @IsDateString()
-  EMPRFEAC: Date;
+  EMPRFEAC?: Date;
 
   //OBJETO SOCIAL DE LA EMPRESA
   @IsOptional()
   @IsString()
-  EMPROBSO: string;
+  EMPROBSO?: string;
 
   //CLASE DE AGENTE RETENEDOR DE RENTA (0=AGENTE RETENEDOR, 1=AUTORRETENEDOR, 2=NO APLICA)
   @IsNotEmpty()
@@ -143,7 +150,7 @@ export class CreateEmpresaDto {
   //ABREVIACION DE LA EMPRESA
   @IsOptional()
   @IsString()
-  EMPRABRV: string;
+  EMPRABRV?: string;
 
   //RELACION CON LA TABLA PA_BARRIOS
   @IsNotEmpty()
@@ -153,7 +160,7 @@ export class CreateEmpresaDto {
   //DETERMINA SI LA EMPRESA ES ORIGEN DE MIGRACION DE REGISTRO DE INICO (1=SI , 0=NO)
   @IsOptional()
   @IsIn([0, 1])
-  EMPRMIGRA: number;
+  EMPRMIGRA?: number;
 
   //TIPO DE LICENCIAMIENTO DE LA EMPRESA (0 = SOFTWARE COMO SERVICIO (SaaS), 1 = Licenciamiento)
   @IsNotEmpty()
@@ -173,37 +180,37 @@ export class CreateEmpresaDto {
   //INDICA EL PESO MÁXIMO PARA EL CAMPO 	P17_CONSPESO
   @IsOptional()
   @IsNumber()
-  EMPRPESO: number;
+  EMPRPESO?: number;
 
   //INDICA LA TALLA MÁXIMA PARA EL CAMPO P17_CONSTALLA
   @IsOptional()
   @IsNumber()
-  EMPRTALLA: number;
+  EMPRTALLA?: number;
 
   //INDICA EL ISC MÁXIMO PARA EL CAMPO 	P17_ISC
   @IsOptional()
   @IsNumber()
-  EMPRISC: number;
+  EMPRISC?: number;
 
   //INDICA EL IMC MÁXIMO PARA EL CAMPO P17_CONSIMC
   @IsOptional()
   @IsNumber()
-  EMPRIMC: number;
+  EMPRIMC?: number;
 
   //RELACIÓN CON LA TABLA FA_PROVETECNO
   @IsNotEmpty()
   @IsNumber()
   EMPRPROVETEC: number;
-  
+
   //IDENTIFICADOR INTERNO DE SIISA PARA INTEGRACIONES
   @IsOptional()
   @IsString()
-  EMPRIDIN: string;
+  EMPRIDIN?: string;
 
   //INDICA LA VERSIÓN A USAR PARA EL MÓDULO DE FACTURACIÓN ELECTRÓNICA
   @IsOptional()
   @IsString()
-  EMPRVERS: string;
+  EMPRVERS?: string;
 
   //TIPO DE DIRECTORIO (0=DIRECTORIO INTERNO, 1=ACTIVE DIRECTORY)
   @IsNotEmpty()
@@ -213,7 +220,7 @@ export class CreateEmpresaDto {
   //IDENTIFICADOR DE INTEGRACION DIGA EXTERNO
   @IsOptional()
   @IsNumber()
-  EMPRDIGA: number;
+  EMPRDIGA?: number;
 
   //TIPO DE DIRECTORIO (0=DIRECTORIO INTERNO, 1=ACTIVE DIRECTORY)
   @IsNotEmpty()
