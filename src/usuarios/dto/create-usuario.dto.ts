@@ -117,7 +117,7 @@ export class CreateUsuarioDto {
   USUAHLLODIG: number;
 
   //RELACION CON LA TABLA SI_HUELLEROAPP
-  @IsNotEmpty()
+  @IsOptional()
   @IsIn([0, 1])
   USUAESTHLLO: number;
 
@@ -179,7 +179,7 @@ export class CreateUsuarioDto {
   USUATOC: number;
 
   //NOMBRE DEL USUARIO EN EL DIRECTORIO
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   USUADIRECTNOMB: string;
 }

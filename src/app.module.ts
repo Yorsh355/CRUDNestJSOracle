@@ -12,6 +12,7 @@ import { TpidentModule } from './tpident/tpident.module';
 import { CotizanteModule } from './cotizante/cotizante.module';
 import { BitacoraModule } from './bitacora/bitacora.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { SedeModule } from './sede/sede.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     CotizanteModule,
     BitacoraModule,
     UsuariosModule,
+    SedeModule,
   ],
   controllers: [],
   providers: [],
