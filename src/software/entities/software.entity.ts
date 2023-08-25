@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Usuario } from '../../usuarios/entities/usuario.entity';
+import { Column, Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: 'SI_SOFTWARE' })
+@Entity({ name: 'S_SOFTWARE' })
 export class Software {
   //CONSECUTIVO DEL REGISTRO
   @PrimaryColumn({
@@ -71,4 +72,8 @@ export class Software {
     nullable: true,
   })
   SOFTFEAC: Date;
+
+  //Relación ManyToMany
+  @ManyToMany(() => Usuario, (usuario) => usuario.software)
+  usuarios: Usuario[];
 }

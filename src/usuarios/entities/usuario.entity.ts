@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Software } from '../../software/entities/software.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryColumn,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity({ name: 'SE_USUARIOS' })
 export class Usuario {
@@ -44,7 +52,7 @@ export class Usuario {
   })
   USUAFEUSU: Date;
 
-  //TIEMPO  CAMBIO DE CLAVE (DIAS) 0 no hay cambio de clave 
+  //TIEMPO  CAMBIO DE CLAVE (DIAS) 0 no hay cambio de clave
   @Column({
     name: 'USUATCLAVE',
     type: 'number',
@@ -70,14 +78,14 @@ export class Usuario {
     length: 10,
     nullable: false,
   })
-  USUAUSCR: string;  
+  USUAUSCR: string;
 
   //FECHA DE CREACIÓN DEL REGISTRO
   @Column({
     name: 'USUAFECR',
     type: 'date',
     nullable: false,
-    default: () => "SYSDATE",
+    default: () => 'SYSDATE',
   })
   USUAFECR: Date;
 
@@ -88,7 +96,7 @@ export class Usuario {
     length: 10,
     nullable: true,
   })
-  USUAUSACT: string; 
+  USUAUSACT: string;
 
   //FECHA DE ACTUALIZACIÓN
   @Column({
@@ -105,14 +113,14 @@ export class Usuario {
     nullable: false,
   })
   USUATPIDENT: number;
-  
+
   //FIRMA
   @Column({
     name: 'USUAFIRMA',
     type: 'blob',
     nullable: true,
   })
-  USUAFIRMA: Buffer; 
+  USUAFIRMA: Buffer;
 
   //EXTENSION (MIMETYPE)
   @Column({
@@ -141,7 +149,7 @@ export class Usuario {
   })
   USUANOMB2: string;
 
-  //PRIMER APELLIDO DEL USUARIO 
+  //PRIMER APELLIDO DEL USUARIO
   @Column({
     name: 'USUAAPELL1',
     type: 'varchar2',
@@ -150,7 +158,7 @@ export class Usuario {
   })
   USUAAPELL1: string;
 
-  //SEGUNDO APELLIDO DEL USUARIO 
+  //SEGUNDO APELLIDO DEL USUARIO
   @Column({
     name: 'USUAAPELL2',
     type: 'varchar2',
@@ -159,7 +167,7 @@ export class Usuario {
   })
   USUAAPELL2: string;
 
-  //FECHA DE ULTIMO CAMIBIO DE CLAVE 
+  //FECHA DE ULTIMO CAMIBIO DE CLAVE
   @Column({
     name: 'USUAFEULCACLA',
     type: 'date',
@@ -167,7 +175,7 @@ export class Usuario {
   })
   USUAFEULCACLA: Date;
 
-  //ESTADO DEL USUARIO  ACTIVO INACTIVO 
+  //ESTADO DEL USUARIO  ACTIVO INACTIVO
   @Column({
     name: 'USUAESTUSU',
     type: 'varchar2',
@@ -177,7 +185,7 @@ export class Usuario {
   })
   USUAESTUSU: string;
 
-  //NUMERO DE TELÉFONO DEL USUARIO 
+  //NUMERO DE TELÉFONO DEL USUARIO
   @Column({
     name: 'USUATELE',
     type: 'varchar2',
@@ -186,7 +194,7 @@ export class Usuario {
   })
   USUATELE: string;
 
-  //CORREO ELECTRONICO DEL USUARIO 
+  //CORREO ELECTRONICO DEL USUARIO
   @Column({
     name: 'USUAMAIL',
     type: 'varchar2',
@@ -222,22 +230,22 @@ export class Usuario {
   })
   USUAUTIHLLO: string;
 
-  //IDENTIFICACION UNICA DEL DISPOSITIVO DE HUELLA DIGITAL QUE ACTUALIZÓ EL REGISTRO POR ÚLTIMA VEZ 
+  //IDENTIFICACION UNICA DEL DISPOSITIVO DE HUELLA DIGITAL QUE ACTUALIZÓ EL REGISTRO POR ÚLTIMA VEZ
   @Column({
     name: 'USUAHLLOID',
     type: 'varchar2',
     length: 255,
     nullable: true,
   })
-  USUAHLLOID: string; 
-  
+  USUAHLLOID: string;
+
   //CAMPO QUE GUARDA LA HUELLA DEL DEDO ÍNDICE DE LA MANO DERECHA DEL USUARIO
   @Column({
     name: 'USUAINDIDCHO',
     type: 'blob',
     nullable: true,
   })
-  USUAINDIDCHO: Buffer; 
+  USUAINDIDCHO: Buffer;
 
   //CAMPO QUE GUARDA LA HUELLA DEL DEDO MEDIO DE LA MANO DERECHA DEL USUARIO
   @Column({
@@ -245,7 +253,7 @@ export class Usuario {
     type: 'blob',
     nullable: true,
   })
-  USUAMEDIODCHO: Buffer; 
+  USUAMEDIODCHO: Buffer;
 
   //CAMPO QUE GUARDA LA HUELLA DEL DEDO ANULAR DE LA MANO DERECHA DEL USUARIO
   @Column({
@@ -253,7 +261,7 @@ export class Usuario {
     type: 'blob',
     nullable: true,
   })
-  USUAANUDCHO: Buffer; 
+  USUAANUDCHO: Buffer;
 
   //CAMPO QUE GUARDA LA HUELLA DEL DEDO MEÑIQUE DE LA MANO DERECHA DEL USUARIO
   @Column({
@@ -270,7 +278,7 @@ export class Usuario {
     nullable: true,
   })
   USUAINDIIZQ: Buffer;
-  
+
   //CAMPO QUE GUARDA LA HUELLA DEL DEDO MEDIO DE LA MANO IZQUIERDA DEL USUARIO
   @Column({
     name: 'USUAMEDIOIZQ',
@@ -293,7 +301,7 @@ export class Usuario {
     type: 'blob',
     nullable: true,
   })
-  USUAMENIIZQ: Buffer;  
+  USUAMENIIZQ: Buffer;
 
   //RELACION CON LA TABLA SI_HUELLEROAPP
   @Column({
@@ -329,4 +337,17 @@ export class Usuario {
     default: '0',
   })
   USUADIRECTNOMB: string;
+
+  //Relación ManyToMany
+  @ManyToMany(() => Software, (software) => software.usuarios)
+  @JoinTable({
+    name: 'S_EMPRESOFTWARE',
+    joinColumn: {
+      name: 'USUAID',
+    },
+    inverseJoinColumn: {
+      name: 'SOFTID',
+    },
+  })
+  software: Software[];
 }
